@@ -1,0 +1,41 @@
+From 100fadbea4b39de4d6c63be67669adcb1f1a76a3 Mon Sep 17 00:00:00 2001
+From: Maheshp <maheshp.ug21.ee@nitp.ac.in>
+Date: Wed, 5 Jul 2023 11:02:54 +0530
+Subject: [PATCH] Changes
+
+---
+ client3.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/client3.py b/client3.py
+index 3fc09b7..95e0a4a 100644
+--- a/client3.py
++++ b/client3.py
+@@ -35,14 +35,16 @@ def getDataPoint(quote):
+     stock = quote['stock']
+     bid_price = float(quote['top_bid']['price'])
+     ask_price = float(quote['top_ask']['price'])
+-    price = bid_price
++    price = (bid_price+ask_price)/2
+     return stock, bid_price, ask_price, price
+ 
+ 
+ def getRatio(price_a, price_b):
+     """ Get ratio of price_a and price_b """
+     """ ------------- Update this function ------------- """
+-    return 1
++    if(price_b==0):
++        return
++    return price_a/price_b
+ 
+ 
+ # Main
+@@ -56,4 +58,4 @@ if __name__ == "__main__":
+             stock, bid_price, ask_price, price = getDataPoint(quote)
+             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+ 
+-        print("Ratio %s" % getRatio(price, price))
++        print("Ratio %s" % getRatio(price['ABC'], price['DEF']))
+-- 
+2.37.3.windows.1
+
